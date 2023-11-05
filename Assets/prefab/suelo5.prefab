@@ -122,8 +122,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: []
-  spawn: 0
-  length: 30
+  spawnZ: 0
+  largo: 10
+  pisos: 15
+  jugador: {fileID: 0}
 --- !u!65 &2697179666438404910
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -208,6 +210,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 22b291066855f6c49831c7d21d41d321, type: 3}
       propertyPath: m_Name
       value: bird
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 22b291066855f6c49831c7d21d41d321, type: 3}
+      propertyPath: m_TagString
+      value: Obstaculo
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

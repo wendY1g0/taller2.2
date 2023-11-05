@@ -8,11 +8,13 @@ public class NewBehaviourScript : MonoBehaviour
     private CharacterController controlador;
     private Vector3 direccion;
     public float forwardSpeed;
-
     //Movimientos laterales
 
     private int pista = 1; //0:izquierda 1:medio 2:derecha
     public float DistanciaPistas = 4; //Distancia entre las pistas
+
+    public float fuerzaSalto = 10;
+    public float gravedad = -20;
 
     private void Start()
     {
@@ -23,14 +25,23 @@ public class NewBehaviourScript : MonoBehaviour
     private void Update()
     {
         direccion.z = forwardSpeed;
+        direccion.y += gravedad * Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            
+            if (controlador.isGrounded)
+            {
+            salto();
+            }
+        }
 
         //Si se presiona una tecla el valor de la pista cambiara
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             pista++;
-            if(pista == 3)
+            if (pista == 3)
             {
-                pista = 2; 
+                pista = 2;
             }
         }
         //El mismo caso aplica para la pista izquierda, pero en este caso se restara
@@ -50,11 +61,13 @@ public class NewBehaviourScript : MonoBehaviour
         if (pista == 0)
         {
             posicionActual += Vector3.left * DistanciaPistas;
-        }else if (pista == 2)
+        }
+        else if (pista == 2)
         {
             posicionActual += Vector3.right * DistanciaPistas;
         }
         transform.position = posicionActual;
+        controlador.center = controlador.center;
 
 
     }
@@ -62,5 +75,20 @@ public class NewBehaviourScript : MonoBehaviour
     {
         controlador.Move(direccion * Time.fixedDeltaTime);
     }
+
+    private void salto()
+    {
+        direccion.y = fuerzaSalto;
+
+
+    }
     
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if(hit.transform.tag == "Obstaculo")
+        {
+            PlayerManager.gameOver = true;
+        }
+    }
+
 }

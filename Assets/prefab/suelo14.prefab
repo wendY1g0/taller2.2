@@ -122,8 +122,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: []
-  spawn: 0
-  length: 30
+  spawnZ: 0
+  largo: 10
+  pisos: 15
+  jugador: {fileID: 0}
 --- !u!65 &694966228458882934
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -159,7 +161,7 @@ GameObject:
   - component: {fileID: 4453361630099866439}
   m_Layer: 0
   m_Name: bird
-  m_TagString: Untagged
+  m_TagString: Obstaculo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

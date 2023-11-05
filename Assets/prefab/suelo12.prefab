@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 61391162516181161}
   m_Layer: 0
   m_Name: Madera
-  m_TagString: Untagged
+  m_TagString: Obstaculo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -228,7 +228,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: []
   spawnZ: 0
-  length: 30
+  largo: 10
+  pisos: 15
+  jugador: {fileID: 0}
 --- !u!65 &6161127096006433781
 BoxCollider:
   m_ObjectHideFlags: 0
