@@ -7,15 +7,13 @@ public class PlayerManager : MonoBehaviour
 {
     public static bool gameOver;
     public GameObject gameOverScene;
-    public Text puntaje;
-    public static int cantPuntaje;
-
+    
     // Start is called before the first frame update
     void Start()
     {
         gameOver = false;
         Time.timeScale = 1;
-        cantPuntaje = 0;
+        
     }
 
 
@@ -28,6 +26,6 @@ public class PlayerManager : MonoBehaviour
             Time.timeScale = 0;
             gameOverScene.SetActive(true);
         }
-        puntaje.text = "Puntaje: " +cantPuntaje;
+       
     }
 }
