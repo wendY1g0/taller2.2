@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1680,10 +1680,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScene: {fileID: 255041125}
-  sonidoGameOver: {fileID: 2174417041157399162, guid: db6ec6ded1e9d4fdaaf8011610119239, type: 3}
-  sonidoCollision: {fileID: 1846908422557835961, guid: 6ab1ffc8a766944fe82fc17a3e9b438c, type: 3}
-  clipGameOver: {fileID: 8300000, guid: d48472dabc008407e8e4327f9feb067e, type: 3}
-  clipColision: {fileID: 8300000, guid: 945a87516e0934517ac2d79b980c33c1, type: 3}
 --- !u!1 &1658360452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1837,7 +1833,7 @@ MonoBehaviour:
   forwardSpeed: 2
   velocidadIncremento: 0.1
   DistanciaPistas: 1.5
-  fuerzaSalto: 10
+  fuerzaSalto: 8
   gravedad: -20
   musicaFondo: {fileID: 1658360453}
   sonidoSalto: {fileID: 8300000, guid: de05107737efd4a9bac1f2ab3ab52671, type: 3}

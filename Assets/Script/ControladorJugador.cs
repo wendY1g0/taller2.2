@@ -16,7 +16,7 @@ public class NewBehaviourScript : MonoBehaviour
     public float DistanciaPistas = 4; //Distancia entre las pistas
 
     //Variables salto
-    public float fuerzaSalto = 10;
+    public float fuerzaSalto = 8;
     public float gravedad = -20;
 
     //Variables sonido
