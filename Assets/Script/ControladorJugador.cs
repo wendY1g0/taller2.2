@@ -4,38 +4,52 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-
+    
     private CharacterController controlador;
     private Vector3 direccion;
     public float forwardSpeed;
-    //Movimientos laterales
+    //Velocidad que se aumentara por segundo a la velocidad inicial 
+    public float velocidadIncremento = 0.1f;
 
+    //Variables movimientos laterales
     private int pista = 1; //0:izquierda 1:medio 2:derecha
     public float DistanciaPistas = 4; //Distancia entre las pistas
 
+    //Variables salto
     public float fuerzaSalto = 10;
     public float gravedad = -20;
+
+    //Variables sonido
+    public AudioSource musicaFondo;
+    public AudioClip sonidoSalto;
+    
+
+
 
     private void Start()
     {
         controlador = GetComponent<CharacterController>();
-
+        direccion.z = forwardSpeed;
+        musicaFondo.Play();
+       
     }
 
     private void Update()
     {
-        direccion.z = forwardSpeed;
+        //La direccion en "z" aumentara al ser multiplicada por la velocidad de incremento
+        direccion.z += velocidadIncremento * Time.deltaTime;
         direccion.y += gravedad * Time.deltaTime;
+        //Si se presiona la tecla espacio, se produce el salto
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            
+            //Componente IsGrounded es parte del Character controller, si el jugador esta en el piso, se podra saltar, de otra manera no se podra 
             if (controlador.isGrounded)
             {
             salto();
             }
         }
 
-        //Si se presiona una tecla el valor de la pista cambiara
+        //Si se presiona una tecla el valor de la pista cambiara, como tambien la posicion de el jugador
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             pista++;
@@ -74,12 +88,18 @@ public class NewBehaviourScript : MonoBehaviour
     private void FixedUpdate()
     {
         controlador.Move(direccion * Time.fixedDeltaTime);
+       
     }
 
     private void salto()
     {
+        
         direccion.y = fuerzaSalto;
-
+        if(sonidoSalto != null)
+        {
+            musicaFondo.PlayOneShot(sonidoSalto);
+        }
+       
 
     }
     
@@ -87,7 +107,13 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if(hit.transform.tag == "Obstaculo")
         {
+            
             PlayerManager.gameOver = true;
+            //Se detiene la musica de fondo y el clip de sonido de salto es null, para que esta no pueda ser accedido
+            
+            musicaFondo.Stop();
+            sonidoSalto = null;
+           
         }
     }
 

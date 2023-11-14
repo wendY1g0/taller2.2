@@ -8,6 +8,9 @@ public class PlayerManager : MonoBehaviour
     public static bool gameOver;
     public GameObject gameOverScene;
     
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,8 @@ public class PlayerManager : MonoBehaviour
             //Detiene el juego
             Time.timeScale = 0;
             gameOverScene.SetActive(true);
+            
+            
         }
        
     }
