@@ -1833,7 +1833,7 @@ MonoBehaviour:
   forwardSpeed: 2
   velocidadIncremento: 0.1
   DistanciaPistas: 1.5
-  fuerzaSalto: 8
+  fuerzaSalto: 9
   gravedad: -20
   musicaFondo: {fileID: 1658360453}
   sonidoSalto: {fileID: 8300000, guid: de05107737efd4a9bac1f2ab3ab52671, type: 3}
@@ -1877,8 +1877,8 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1
-  m_Radius: 0.8
+  m_Height: 1.67
+  m_Radius: 0.65
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    
+
+    //Componente oara controlar el dinosaurio
     private CharacterController controlador;
     private Vector3 direccion;
     public float forwardSpeed;
@@ -25,9 +26,10 @@ public class NewBehaviourScript : MonoBehaviour
     
 
 
-
+    //Metodo de inicio del juego
     private void Start()
     {
+        //Obtiene el componente CharacterController del objeto
         controlador = GetComponent<CharacterController>();
         direccion.z = forwardSpeed;
         musicaFondo.Play();
@@ -38,7 +40,9 @@ public class NewBehaviourScript : MonoBehaviour
     {
         //La direccion en "z" aumentara al ser multiplicada por la velocidad de incremento
         direccion.z += velocidadIncremento * Time.deltaTime;
+        //Le da la gravedad al dinosaurio
         direccion.y += gravedad * Time.deltaTime;
+
         //Si se presiona la tecla espacio, se produce el salto
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -58,7 +62,7 @@ public class NewBehaviourScript : MonoBehaviour
                 pista = 2;
             }
         }
-        //El mismo caso aplica para la pista izquierda, pero en este caso se restara
+        //El mismo caso aplica para la pista izquierda
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             pista--;
@@ -68,8 +72,7 @@ public class NewBehaviourScript : MonoBehaviour
             }
         }
 
-        //Para calcular la pista donde nos encontramos
-
+        //Para calcular la posicion actual del dinosaurio en la pista
         Vector3 posicionActual = transform.position.z * transform.forward + transform.position.y * transform.up;
 
         if (pista == 0)
@@ -81,36 +84,42 @@ public class NewBehaviourScript : MonoBehaviour
             posicionActual += Vector3.right * DistanciaPistas;
         }
         transform.position = posicionActual;
+        //Actualiza el centro
         controlador.center = controlador.center;
 
 
     }
+    //Se utiliza FixedUpdate para tener una mejor consistencia en el comportamiento, ya que en este caso se realizan cambios fisicos de manera regular  
     private void FixedUpdate()
     {
         controlador.Move(direccion * Time.fixedDeltaTime);
        
     }
 
+    //Metodo para el salto
     private void salto()
     {
         
         direccion.y = fuerzaSalto;
+        //Metodo para el sonido que se reproduce al saltar
         if(sonidoSalto != null)
         {
+            //PlayOneShot solo lo reproduce 1 vez
             musicaFondo.PlayOneShot(sonidoSalto);
         }
        
 
     }
-    
+
+    //Metodo utilizado cuando el jugador choca contra un collider
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        //Si el tag de el objeto es obstaculo, el juego se detendra automaticamente, desplegando una pantalla game over 
         if(hit.transform.tag == "Obstaculo")
         {
-            
+            //Setea el PlayerManager a true, para asi desplegar la pantalla de perdida
             PlayerManager.gameOver = true;
             //Se detiene la musica de fondo y el clip de sonido de salto es null, para que esta no pueda ser accedido
-            
             musicaFondo.Stop();
             sonidoSalto = null;
            

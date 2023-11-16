@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-//Codigo para cambiar la escena
 
+//Codigo para cambiar la escena
 public class CambiarAEscenaJuego : MonoBehaviour
 {
     //Metodo para cambiar de escena
